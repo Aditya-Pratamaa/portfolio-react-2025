@@ -3,6 +3,7 @@ import { Code, Coffee, Heart, Award, Users, MapPin, Calendar, Download, External
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ImageProfile from '../assets/image/ImageProfile.jpg';
+
 const AboutMe = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [particles, setParticles] = useState([]);
@@ -43,19 +44,17 @@ const AboutMe = () => {
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: Users },
-    // { id: 'skills', label: 'Skills', icon: Code },
     { id: 'experience', label: 'Experience', icon: Award },
-    // { id: 'interests', label: 'Interests', icon: Heart }
   ];
 
   const skills = {
     frontend: [
       { name: 'React', icon: 'react', color: '#61DAFB' },
-      { name: 'Bootstrap', icon: 'bootsrap', color: '#000000' },
+      { name: 'Bootstrap', icon: 'bootsrap', color: '#7952B3' },
       { name: 'Tailwind CSS', icon: 'tailwindcss', color: '#06B6D4' },
     ],
     backend: [
-      { name: 'Laravel', icon: 'nodejs', color: '#F05032' },
+      { name: 'Laravel', icon: 'laravel', color: '#F05032' },
       { name: 'Python', icon: 'python', color: '#3776AB' },
       { name: 'MySql', icon: 'mysql', color: '#4479A1' },
     ],
@@ -64,9 +63,9 @@ const AboutMe = () => {
     ],
     tools: [
       { name: 'Git', icon: 'git', color: '#F05032' },
-      { name: 'Github', icon: 'github', color: '#000000' },
+      { name: 'Github', icon: 'github', color: '#181717' },
       { name: 'Notion', icon: 'notion', color: '#000000' },
-      { name: 'Laragon', icon: 'laragon', color: '#000000' },
+      { name: 'Laragon', icon: 'laragon', color: '#0E83CD' },
       { name: 'Figma', icon: 'figma', color: '#F24E1E' },
       { name: 'VS Code', icon: 'visualstudiocode', color: '#007ACC' }
     ]
@@ -108,15 +107,15 @@ const AboutMe = () => {
       {/* Hero Section */}
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">
-            Hi there! I'm <span className="text-rose-600">Aditya Pratama</span> 👋
+          <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6 transition-colors duration-300">
+            Hi there! I'm <span className="text-rose-600 dark:text-rose-400">Aditya Pratama</span> 👋
           </h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
-            A passionate <span className="font-semibold text-rose-600">Software Engineer</span> and 
-            <span className="font-semibold text-rose-600"> IT Enthusiast</span> based in Bogor City, Indonesia. 
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6 transition-colors duration-300">
+            A passionate <span className="font-semibold text-rose-600 dark:text-rose-400">Software Engineer</span> and 
+            <span className="font-semibold text-rose-600 dark:text-rose-400"> IT Enthusiast</span> based in Bogor City, Indonesia. 
             I love creating digital experiences that make people's lives easier and more enjoyable.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-8">
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 transition-colors duration-300">
             With over 3 years of experience in web development, I specialize in building 
             modern, scalable applications using cutting-edge technologies. I'm always 
             eager to learn new things and take on challenging projects that push the 
@@ -127,8 +126,8 @@ const AboutMe = () => {
               <Download className="w-5 h-5" />
               Download Resume
             </button>
-            <button className="flex items-center gap-2 bg-white/60 text-gray-700 px-6 py-3 rounded-full font-semibold border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
-              <Link to= "/projects" className="flex items-center gap-2">
+            <button className="flex items-center gap-2 bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-full font-semibold border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80 transition-all duration-300 transform hover:scale-105">
+              <Link to="/projects" className="flex items-center gap-2">
                 <Code className="w-5 h-5" />
                 View Projects
               </Link>
@@ -139,7 +138,7 @@ const AboutMe = () => {
         <div className="relative">
           <div className="w-80 h-80 mx-auto relative">
             <div className="absolute inset-0 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full blur-2xl opacity-30 animate-pulse" />
-            <div className="relative w-full h-full bg-white/60 backdrop-blur-sm rounded-full border border-rose-200 flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-rose-200 dark:border-gray-600 flex items-center justify-center overflow-hidden transition-colors duration-300">
               <img src={ImageProfile} alt="Aditya Pratama" className="w-full h-full object-cover" />
             </div>
             {/* Floating icons around avatar */}
@@ -159,56 +158,56 @@ const AboutMe = () => {
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
-            <stat.icon className="w-8 h-8 mx-auto mb-3 text-rose-600" />
-            <div className="text-3xl font-bold text-gray-800 mb-1">{stat.number}</div>
-            <div className="text-sm text-gray-600">{stat.label}</div>
+          <div key={index} className="text-center p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-xl border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80 transition-all duration-300 transform hover:scale-105">
+            <stat.icon className="w-8 h-8 mx-auto mb-3 text-rose-600 dark:text-rose-400" />
+            <div className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-1 transition-colors duration-300">{stat.number}</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">{stat.label}</div>
           </div>
         ))}
       </div>
 
       {/* Quick Info */}
       <div className="grid md:grid-cols-2 gap-6">
-        <div className="p-6 bg-white/40 backdrop-blur-sm rounded-xl border border-rose-200">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">What I Do</h3>
+        <div className="p-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-xl border border-rose-200 dark:border-gray-600 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">What I Do</h3>
           <ul className="space-y-3">
             <li className="flex items-center gap-3">
-              <ChevronRight className="w-5 h-5 text-rose-500" />
-              <span className="text-gray-700">Full-Stack Web Development</span>
+              <ChevronRight className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Full-Stack Web Development</span>
             </li>
             <li className="flex items-center gap-3">
-              <ChevronRight className="w-5 h-5 text-rose-500" />
-              <span className="text-gray-700">UI/UX Design Implementation</span>
+              <ChevronRight className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">UI/UX Design Implementation</span>
             </li>
             <li className="flex items-center gap-3">
-              <ChevronRight className="w-5 h-5 text-rose-500" />
-              <span className="text-gray-700">API Development & Integration</span>
+              <ChevronRight className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">API Development & Integration</span>
             </li>
             <li className="flex items-center gap-3">
-              <ChevronRight className="w-5 h-5 text-rose-500" />
-              <span className="text-gray-700">Performance Optimization</span>
+              <ChevronRight className="w-5 h-5 text-rose-500 dark:text-rose-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Performance Optimization</span>
             </li>
           </ul>
         </div>
         
-        <div className="p-6 bg-white/40 backdrop-blur-sm rounded-xl border border-rose-200">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">Fun Facts</h3>
+        <div className="p-6 bg-white/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-xl border border-rose-200 dark:border-gray-600 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">Fun Facts</h3>
           <ul className="space-y-3">
             <li className="flex items-center gap-3">
-              <Star className="w-5 h-5 text-yellow-500" />
-              <span className="text-gray-700">Art and design enthusiast</span>
+              <Star className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Art and design enthusiast</span>
             </li>
             <li className="flex items-center gap-3">
-              <Star className="w-5 h-5 text-yellow-500" />
-              <span className="text-gray-700">Playing video games</span>
+              <Star className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Playing video games</span>
             </li>
             <li className="flex items-center gap-3">
-              <Star className="w-5 h-5 text-yellow-500" />
-              <span className="text-gray-700">Mechanical keyboard enthusiast</span>
+              <Star className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Mechanical keyboard enthusiast</span>
             </li>
             <li className="flex items-center gap-3">
-              <Star className="w-5 h-5 text-yellow-500" />
-              <span className="text-gray-700">Always learning something new</span>
+              <Star className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
+              <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">Always learning something new</span>
             </li>
           </ul>
         </div>
@@ -219,25 +218,33 @@ const AboutMe = () => {
   const renderSkills = () => (
     <div className="space-y-8">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold text-gray-800 mb-4">Technical Skills</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">Technical Skills</h3>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
           I'm constantly learning and improving my skills. Here's what I'm currently working with:
         </p>
       </div>
 
       {Object.entries(skills).map(([category, skillList]) => (
-        <div key={category} className="p-8 bg-white/60 backdrop-blur-sm rounded-2xl border border-rose-200">
-          <h4 className="text-2xl font-semibold text-gray-800 mb-6 capitalize">
+        <div key={category} className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-rose-200 dark:border-gray-600 transition-colors duration-300">
+          <h4 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6 capitalize transition-colors duration-300">
             {category}
           </h4>
           <div className="flex flex-wrap gap-4">
             {skillList.map((skill, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200"
+                className="flex items-center gap-3 px-4 py-2 bg-white dark:bg-gray-700 rounded-full shadow-sm border border-gray-200 dark:border-gray-600 hover:shadow-md transition-all duration-300 hover:scale-105"
               >
-                <div style={{ color: skill.color }} dangerouslySetInnerHTML={{ __html: `<svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.247a9.753 9.753 0 00-9.75 9.75c0 4.28 2.76 7.91 6.51 9.24.47.09.64-.2.64-.45v-1.6c-2.68.58-3.24-1.29-3.24-1.29-.43-1.09-1.05-1.38-1.05-1.38-.86-.59.07-.58.07-.58.95.07 1.45.98 1.45.98.84 1.44 2.21 1.02 2.75.78.09-.61.33-.98.6-1.21-2.1-.24-4.31-1.05-4.31-4.68 0-1.03.37-1.87.98-2.53-.1-.24-.42-1.2.09-2.49 0 0 .79-.25 2.6 1.45a9.14 9.14 0 014.73 0c1.81-1.7 2.6-1.45 2.6-1.45.51 1.29.19 2.25.09 2.49.61.66.98 1.5.98 2.53 0 3.64-2.21 4.44-4.32 4.67.34.29.64.87.64 1.75v2.6c0 .25.17.54.64.45A9.753 9.753 0 0021.75 12c0-5.38-4.37-9.75-9.75-9.75z"/></svg>` }} />
-                <span className="font-medium text-gray-700">{skill.name}</span>
+                <div 
+                  style={{ color: skill.color }} 
+                  className="w-6 h-6 flex items-center justify-center"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
+                    <circle cx="12" cy="12" r="6" fill="currentColor"/>
+                  </svg>
+                </div>
+                <span className="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">{skill.name}</span>
               </div>
             ))}
           </div>
@@ -249,8 +256,8 @@ const AboutMe = () => {
   const renderExperience = () => (
     <div className="space-y-8">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold text-gray-800 mb-4">Work Experience</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">Work Experience</h3>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
           My journey in the tech industry
         </p>
       </div>
@@ -263,15 +270,15 @@ const AboutMe = () => {
           {experience.map((exp, index) => (
             <div key={index} className="relative pl-20">
               {/* Timeline dot */}
-              <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-full border-4 border-white shadow-lg" />
+              <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg transition-colors duration-300" />
               
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105">
+              <div className="bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80 transition-all duration-300 transform hover:scale-105">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div>
-                    <h4 className="text-xl font-bold text-gray-800">{exp.title}</h4>
-                    <p className="text-rose-600 font-semibold">{exp.company}</p>
+                    <h4 className="text-xl font-bold text-gray-800 dark:text-gray-100 transition-colors duration-300">{exp.title}</h4>
+                    <p className="text-rose-600 dark:text-rose-400 font-semibold transition-colors duration-300">{exp.company}</p>
                   </div>
-                  <div className="text-right text-gray-600">
+                  <div className="text-right text-gray-600 dark:text-gray-400 transition-colors duration-300">
                     <p className="font-medium">{exp.period}</p>
                     <p className="text-sm flex items-center gap-1 justify-end">
                       <MapPin className="w-4 h-4" />
@@ -280,17 +287,17 @@ const AboutMe = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-700 leading-relaxed mb-6">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 transition-colors duration-300">
                   {exp.description}
                 </p>
                 
                 <div>
-                  <h5 className="font-semibold text-gray-800 mb-3">Key Achievements:</h5>
+                  <h5 className="font-semibold text-gray-800 dark:text-gray-100 mb-3 transition-colors duration-300">Key Achievements:</h5>
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-center gap-3">
                         <div className="w-2 h-2 bg-rose-400 rounded-full" />
-                        <span className="text-gray-700">{achievement}</span>
+                        <span className="text-gray-700 dark:text-gray-300 transition-colors duration-300">{achievement}</span>
                       </li>
                     ))}
                   </ul>
@@ -306,8 +313,8 @@ const AboutMe = () => {
   const renderInterests = () => (
     <div className="space-y-8">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold text-gray-800 mb-4">Beyond Coding</h3>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h3 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4 transition-colors duration-300">Beyond Coding</h3>
+        <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto transition-colors duration-300">
           When I'm not writing code, here's what I love to do in my free time.
         </p>
       </div>
@@ -316,15 +323,15 @@ const AboutMe = () => {
         {interests.map((interest, index) => (
           <div 
             key={index}
-            className="group p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-rose-200 hover:bg-white/80 transition-all duration-300 transform hover:scale-105 hover:rotate-1"
+            className="group p-6 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80 transition-all duration-300 transform hover:scale-105 hover:rotate-1"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl group-hover:scale-110 transition-transform duration-300">
                 <interest.icon className="w-6 h-6 text-white" />
               </div>
-              <h4 className="font-semibold text-gray-800">{interest.name}</h4>
+              <h4 className="font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300">{interest.name}</h4>
             </div>
-            <p className="text-gray-600">{interest.description}</p>
+            <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">{interest.description}</p>
           </div>
         ))}
       </div>
@@ -362,12 +369,12 @@ const AboutMe = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-red-50"
+      className="min-h-screen relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500"
     >
       {/* Animated background */}
       <div className="absolute inset-0 opacity-20">
         <div 
-          className="absolute w-96 h-96 bg-rose-300 rounded-full blur-3xl animate-pulse"
+          className="absolute w-96 h-96 bg-rose-300 dark:bg-rose-800 rounded-full blur-3xl animate-pulse transition-colors duration-500"
           style={{
             left: `${mousePos.x * 0.02}%`,
             top: `${mousePos.y * 0.02}%`,
@@ -375,7 +382,7 @@ const AboutMe = () => {
           }}
         />
         <div 
-          className="absolute w-64 h-64 bg-pink-300 rounded-full blur-3xl animate-pulse"
+          className="absolute w-64 h-64 bg-pink-300 dark:bg-pink-800 rounded-full blur-3xl animate-pulse transition-colors duration-500"
           style={{
             right: `${mousePos.x * 0.01}%`,
             bottom: `${mousePos.y * 0.01}%`,
@@ -388,7 +395,7 @@ const AboutMe = () => {
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute bg-rose-400 rounded-full opacity-30 animate-bounce"
+          className="absolute bg-rose-400 dark:bg-rose-600 rounded-full opacity-30 animate-bounce transition-colors duration-500"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -405,12 +412,12 @@ const AboutMe = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <button className="flex items-center gap-2 text-gray-600 hover:text-rose-600 transition-colors duration-300 mb-8 mt-13 mx-auto">
+          <button className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors duration-300 mb-8 mt-13 mx-auto">
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </button>
           
-          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-rose-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-rose-600 via-pink-600 to-red-600 dark:from-rose-400 dark:via-pink-400 dark:to-red-400 bg-clip-text text-transparent">
             About Me
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-rose-400 to-pink-400 mx-auto rounded-full mb-6" />
@@ -425,7 +432,7 @@ const AboutMe = () => {
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
                 activeTab === tab.id 
                   ? 'bg-gradient-to-r from-rose-500 to-pink-500 text-white shadow-lg' 
-                  : 'bg-white/60 text-gray-700 border border-rose-200 hover:bg-white/80'
+                  : 'bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80'
               }`}
             >
               <tab.icon className="w-5 h-5" />

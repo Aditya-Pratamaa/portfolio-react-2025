@@ -81,7 +81,7 @@ const skillsData = [
 
 const SkillsSection = () => {
   return (
-    <div className="bg-[#fdfaf6] py-20 px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#fdfaf6] dark:bg-gray-900 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
@@ -89,10 +89,10 @@ const SkillsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-xl text-gray-800 font-semibold tracking-wide mb-16 relative inline-block"
+          className="text-xl text-gray-800 dark:text-gray-200 font-semibold tracking-wide mb-16 relative inline-block"
         >
           Skills & Tools
-          <span className="block w-32 h-[2px] bg-gray-300 mx-auto mt-2"></span>
+          <span className="block w-32 h-[2px] bg-gray-300 dark:bg-gray-600 mx-auto mt-2"></span>
         </motion.h2>
 
         {/* 2 kolom utama */}
@@ -112,13 +112,13 @@ const SkillsSection = () => {
                       delay: skillIndex * 0.05 + catIndex * 0.2,
                     }}
                     whileHover={{ scale: 1.05, borderColor: "#D1D5DB" }}
-                    className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-gray-300 bg-white shadow-sm hover:shadow-md transition cursor-pointer"
+                    className="flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition cursor-pointer"
                   >
                     <div
                       className="w-8 h-8 sm:w-10 sm:h-10 mb-2"
                       dangerouslySetInnerHTML={{ __html: skill.icon }}
                     ></div>
-                    <p className="text-gray-700 text-xs font-medium text-center">
+                    <p className="text-gray-700 dark:text-gray-300 text-xs font-medium text-center">
                       {skill.name}
                     </p>
                   </motion.div>
@@ -131,7 +131,7 @@ const SkillsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6 }}
-                className="inline-block px-6 py-2 rounded-full border border-gray-300 bg-white text-gray-700 text-sm font-medium"
+                className="inline-block px-6 py-2 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm font-medium"
               >
                 {category.category}
               </motion.div>
@@ -146,10 +146,10 @@ const SkillsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-gray-600 text-lg mt-16 relative inline-block cursor-pointer hover:text-gray-800"
+            className="text-gray-600 dark:text-gray-400 text-lg mt-16 relative inline-block cursor-pointer hover:text-gray-800 dark:hover:text-gray-200"
           >
             Next, enjoy my project
-            <span className="block w-32 h-[2px] bg-gray-300 mx-auto mt-2"></span>
+            <span className="block w-32 h-[2px] bg-gray-300 dark:bg-gray-600 mx-auto mt-2"></span>
           </motion.p>
         </Link>
       </div>
