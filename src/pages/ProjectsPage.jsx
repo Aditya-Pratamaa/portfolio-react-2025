@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import projectsData from '../datas/projects/projects.json';
 import { 
   ExternalLink, 
@@ -16,8 +17,22 @@ import {
   ChevronRight,
   Clock
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import ComingSoon from '../components/ComingSoon';
+
+// Log untuk debugging
+console.log('Link import:', Link);
+
+// Impor semua gambar proyek
+import project1 from '../assets/projects/1.png';
+import project2 from '../assets/projects/2.png';
+import project3 from '../assets/projects/3.png';
+import project4 from '../assets/projects/4.png';
+import project5 from '../assets/projects/5.png';
+import project6 from '../assets/projects/6.png';
+import project7 from '../assets/projects/7.png';
+import project8 from '../assets/projects/8.png';
+import project9 from '../assets/projects/9.png';
+import project10 from '../assets/projects/10.png';
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
@@ -27,6 +42,31 @@ const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [particles, setParticles] = useState([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Pemetaan gambar ke ID proyek
+  const projectImages = {
+    1: project1,
+    2: project2,
+    3: project3,
+    4: project4,
+    5: project5,
+    6: project6,
+    7: project7,
+    8: project8,
+    9: project9,
+    10: project10
+  };
+
+  // Fungsi untuk mengimpor gambar secara dinamis
+  const importImage = (imagePath) => {
+    try {
+      // Untuk pengembangan lokal
+      return require(`../assets/projects/${imagePath.split('/').pop()}`);
+    } catch (error) {
+      // Fallback untuk deployment
+      return `/assets/projects/${imagePath.split('/').pop()}`;
+    }
+  };
 
   // Generate floating particles
   useEffect(() => {
@@ -289,9 +329,9 @@ const ProjectsPage = () => {
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-t-2xl bg-gradient-to-br from-rose-100 to-pink-100 dark:from-gray-700 dark:to-gray-600 h-48 flex items-center justify-center">
-                  {project.image ? (
+                  {project.image && projectImages[project.id] ? (
                     <img 
-                      src={project.image} 
+                      src={projectImages[project.id]} 
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
