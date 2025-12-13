@@ -47,9 +47,9 @@ const skillsData = [
         icon: '<img src="https://img.icons8.com/color/48/000000/mysql.png" alt="MySQL" />',
       },
       {
-        name: "VS Code",
-        icon: '<img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code" />',
-      },
+        name: "Laravel",
+        icon: '<img src="https://img.icons8.com/?size=100&id=lRjcvhvtR81o&format=png&color=000000" alt="Laravel" />',
+      }
     ],
   },
   {
@@ -58,6 +58,10 @@ const skillsData = [
       {
         name: "Git",
         icon: '<img src="https://img.icons8.com/color/48/000000/git.png" alt="Git" />',
+      },
+      {
+        name: "VS Code",
+        icon: '<img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="VS Code" />',
       },
       {
         name: "Notion",

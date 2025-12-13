@@ -12,6 +12,7 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [particles, setParticles] = useState([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -57,19 +58,44 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Client-side validation
+    const { name, email, subject, message } = formData;
+    if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
+      setSubmitError('Please fill out all fields before sending.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mjknloae', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        const errorData = await response.json();
+        setSubmitError(errorData.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 2000);
+    }
   };
 
   const contactInfo = [
@@ -82,8 +108,8 @@ const ContactPage = () => {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+62 895-0000-0000',
-      subtitle: 'Mon-Fri from 9am to 6pm'
+      value: '+62 895-3553-21756',
+      subtitle: ''
     },
     {
       icon: MapPin,
@@ -96,7 +122,7 @@ const ContactPage = () => {
   const socialLinks = [
     { icon: Linkedin, name: 'LinkedIn', url: 'https://www.linkedin.com/in/aditya-pratama-761143323/', color: 'hover:text-blue-600 dark:hover:text-blue-400' },
     { icon: Github, name: 'GitHub', url: 'https://github.com/Aditya-Pratamaa', color: 'hover:text-gray-800 dark:hover:text-gray-200' },
-    { icon: Instagram, name: 'Instagram', url: '#', color: 'hover:text-pink-600 dark:hover:text-pink-400' },
+    
   ];
 
   return (
@@ -242,6 +268,15 @@ const ContactPage = () => {
               </div>
             )}
 
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-xl flex items-center gap-3 transition-colors duration-300">
+                <div className="text-red-600 dark:text-red-300">
+                  <p className="font-semibold">Submission Failed</p>
+                  <p className="text-sm">{submitError}</p>
+                </div>
+              </div>
+            )}
+
             <div className="space-y-4 sm:space-y-6">
               {/* Adjusted grid to single column on small screens, two columns on medium screens and up */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -255,6 +290,7 @@ const ContactPage = () => {
                     placeholder="Your Name"
                     className="w-full pl-10 pr-4 py-3 sm:py-4 bg-white/80 dark:bg-gray-700/80 border border-rose-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-rose-400 dark:focus:border-rose-500 focus:bg-white dark:focus:bg-gray-700 transition-all duration-300"
                     required
+                    minLength={2}
                   />
                 </div>
                 
@@ -268,6 +304,7 @@ const ContactPage = () => {
                     placeholder="Your Email"
                     className="w-full pl-10 pr-4 py-3 sm:py-4 bg-white/80 dark:bg-gray-700/80 border border-rose-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-rose-400 dark:focus:border-rose-500 focus:bg-white dark:focus:bg-gray-700 transition-all duration-300"
                     required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   />
                 </div>
               </div>
@@ -280,6 +317,7 @@ const ContactPage = () => {
                 placeholder="Subject"
                 className="w-full px-4 py-3 sm:py-4 bg-white/80 dark:bg-gray-700/80 border border-rose-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-rose-400 dark:focus:border-rose-500 focus:bg-white dark:focus:bg-gray-700 transition-all duration-300"
                 required
+                minLength={4}
               />
 
               <textarea
@@ -287,9 +325,10 @@ const ContactPage = () => {
                 value={formData.message}
                 onChange={handleInputChange}
                 placeholder="Your Message"
-                rows={5} // Reduced default rows for mobile
+                rows={5}
                 className="w-full px-4 py-3 sm:py-4 bg-white/80 dark:bg-gray-700/80 border border-rose-200 dark:border-gray-600 rounded-xl text-gray-800 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:border-rose-400 dark:focus:border-rose-500 focus:bg-white dark:focus:bg-gray-700 transition-all duration-300 resize-none"
                 required
+                minLength={10}
               />
 
               <button

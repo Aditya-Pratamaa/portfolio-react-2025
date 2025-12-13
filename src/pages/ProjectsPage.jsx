@@ -110,7 +110,8 @@ const ProjectsPage = () => {
     { value: 'web', label: 'Web Apps', count: projects.filter(p => p.tags.includes('web')).length },
     { value: 'mobile', label: 'Mobile Apps', count: projects.filter(p => p.tags.includes('mobile')).length },
     { value: 'frontend', label: 'Frontend', count: projects.filter(p => p.tags.includes('frontend')).length },
-    { value: 'fullstack', label: 'Full Stack', count: projects.filter(p => p.tags.includes('fullstack')).length }
+    { value: 'fullstack', label: 'Full Stack', count: projects.filter(p => p.tags.includes('fullstack')).length },
+    { value: 'data-annotation', label: 'Data Annotation', count: projects.filter(p => p.tags.includes('data-annotation')).length }
   ];
 
   const formatDate = (dateString) => {
@@ -131,7 +132,15 @@ const ProjectsPage = () => {
       'Node.js': 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
       'MongoDB': 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
       'Socket.io': 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
-      'Framer Motion': 'bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200'
+      'Framer Motion': 'bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200',
+      'Label Studio': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
+      'Visual Studio Code': 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200',
+      'Laravel': 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200',
+      'HTML': 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
+      'CSS': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+      'JavaScript': 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200',
+      'Dart': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+      'Flutter': 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
     };
     return colors[tech] || 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200';
   };
@@ -220,9 +229,9 @@ const ProjectsPage = () => {
         </div>
 
         {/* Search and Filter Section */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-12">
+        <div className="space-y-6 mb-12">
           {/* Search */}
-          <div className="relative flex-1">
+          <div className="relative w-full max-w-2xl mx-auto">
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
             <input
               type="text"
@@ -234,7 +243,7 @@ const ProjectsPage = () => {
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {filterOptions.map(option => (
               <button
                 key={option.value}
@@ -320,10 +329,10 @@ const ProjectsPage = () => {
                 {/* Project Content */}
                 <div className="p-6">
                   {/* Date */}
-                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
+                  {/* <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
                     <Calendar className="w-4 h-4" />
                     {formatDate(project.date)}
-                  </div>
+                  </div> */}
 
                   {/* Title */}
                   <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3 transition-colors duration-300 group-hover:text-rose-600 dark:group-hover:text-rose-400">
@@ -394,13 +403,13 @@ const ProjectsPage = () => {
               Let's Talk
               <ChevronRight className="w-5 h-5" />
             </Link>
-            <a
+            {/* <a
               href="mailto:adityapratamatech@gmail.com"
               className="flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-rose-600 transition-all duration-300 transform hover:scale-105"
             >
               Send Email
               <ExternalLink className="w-5 h-5" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

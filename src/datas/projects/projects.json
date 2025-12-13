@@ -2,12 +2,112 @@
   {
     "id": 1,
     "title": "SCADS",
-    "description": "Membangun platform promosi dan pendaftaran kursus online PT Exorty Indonesia menggunakan React JS dan Fast API.",
+    "description": "Building a platform for promoting and registering online courses for PT Exorty Indonesia using React JS and Fast API.",
     "image": "/src/assets/projects/1.png",
     "technologies": ["React", "Tailwind CSS", "Fast API", "MySQL"],
-    "github": "https://github.com/Aditya-Pratamaa/SCADS",
+    "github": "",
     "demo": "https://scads.starcore.co.id/",
+    "tags": ["web", "frontend", "fullstack"],
+    "date": ""
+  },
+  {
+    "id": 2,
+    "title": "Internal Location Map",
+    "description": "Building a map for displaying internal locations for PT Exorty Indonesia using React JS and Fast API.",
+    "image": "/src/assets/projects/2.png",
+    "technologies": ["React", "Tailwind CSS", "Fast API", "MySQL"],
+    "github": "",
+    "demo": "http://test-location-map-client.vercel.app",
+    "tags": ["web", "frontend", "fullstack"],
+    "date": ""
+  },
+  {
+    "id": 3,
+    "title": "LMS",
+    "description": "Building a Learning Management System with Learnpress for PT Exorty Indonesia using WordPress and Learnpress.",
+    "image": "/src/assets/projects/3.png",
+    "technologies": ["Wordpress", "Learnpress"],
+    "github": "",
+    "demo": "",
+    "tags": [],
+    "date": ""
+  },
+  {
+    "id": 4,
+    "title": "Named Entity Recognition (NER)",
+    "description": "Annotated and labeled text data for Named Entity Recognition (NER) tasks using Label Studio.",
+    "image": "/src/assets/projects/4.png",
+    "technologies": ["Label Studio", "Visual Studio Code"],
+    "github": "",
+    "demo": "",
+    "tags": ["data-annotation"],
+    "date": ""
+  },
+  {
+    "id": 5,
+    "title": "Rayon Website",
+    "description": "Building a website for Rayon with Laravel and MySQL",
+    "image": "/src/assets/projects/5.png",
+    "technologies": ["Laravel", "Tailwind CSS", "MySQL"],
+    "github": "https://github.com/Aditya-Pratamaa/laravel-rayon",
+    "demo": "",
+    "tags": ["web", "fullstack"],
+    "date": ""
+  },
+  {
+    "id": 6,
+    "title": "Pengaduan Masyarakat",
+    "description": "Building a website for Pengaduan Masyarakat with Laravel and MySQL",
+    "image": "/src/assets/projects/6.png",
+    "technologies": ["Laravel", "Tailwind CSS", "MySQL"],
+    "github": "https://github.com/Aditya-Pratamaa/uk-pengaduanMasyarakat",
+    "demo": "",
+    "tags": ["web", "fullstack"],
+    "date": ""
+  },
+  {
+    "id": 7,
+    "title": "Hitung Bunga Suku",
+    "description": "Building a website for Counting Interest with HTML, CSS, and JavaScript",
+    "image": "/src/assets/projects/7.png",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "github": "https://github.com/Aditya-Pratamaa/hitungBunga",
+    "demo": "https://menghitung-bunga-aditya.netlify.app/",
     "tags": ["web", "frontend"],
-    "date": "2025-05-12"
+    "date": ""
+  },
+  {
+    "id": 8,
+    "title": "Tracking Weather",
+    "description": "Building mobile app for tracking weather using Dart and Flutter integration with OpenWeatherMap API",
+    "image": "/src/assets/projects/8.png",
+    "technologies": ["Dart", "Flutter"],
+    "github": "",
+    "demo": "",
+    "tags": ["mobile"],
+    "date": ""
+  },
+  {
+    "id": 9,
+    "title": "Quran App",
+    "description": "Building mobile app for reading Quran using Dart and Flutter integration with Quran API",
+    "image": "/src/assets/projects/9.png",
+    "technologies": ["Dart", "Flutter"],
+    "github": "https://github.com/Aditya-Pratamaa/quran-mobile",
+    "demo": "",
+    "tags": ["mobile"],
+    "date": ""
+  },
+  {
+    "id": 10,
+    "title": "Virtual Gift",
+    "description": "Building website for Virtual Gift with HTML, CSS, and JavaScript",
+    "image": "/src/assets/projects/10.png",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "github": "",
+    "demo": "https://virtual-gift-idea-aditya.vercel.app/",
+    "tags": ["web", "frontend"],
+    "date": ""
   }
+
 ]
