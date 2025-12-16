@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import projectsData from '../datas/projects/projects.json';
-import { 
-  ExternalLink, 
-  Github, 
-  Calendar, 
-  Filter, 
-  Search, 
-  ArrowLeft, 
-  Eye, 
+import {
+  ExternalLink,
+  Github,
+  Calendar,
+  Filter,
+  Search,
+  ArrowLeft,
+  Eye,
   Code2,
   Globe,
   Zap,
   Star,
   ChevronRight,
-  Clock
+  Clock,
+  X
 } from 'lucide-react';
 import ComingSoon from '../components/ComingSoon';
 
@@ -42,6 +43,7 @@ const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [particles, setParticles] = useState([]);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [modalImage, setModalImage] = useState(null);
 
   // Pemetaan gambar ke ID proyek
   const projectImages = {
@@ -341,26 +343,14 @@ const ProjectsPage = () => {
                   
                   {/* Overlay with quick actions */}
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
-                      >
-                        <Eye className="w-6 h-6" />
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
-                      >
-                        <Github className="w-6 h-6" />
-                      </a>
-                    )}
+                    <button
+                      type="button"
+                      onClick={() => setModalImage({ src: projectImages[project.id], title: project.title })}
+                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
+                      aria-label={`Lihat gambar ${project.title}`}
+                    >
+                      <Eye className="w-6 h-6" />
+                    </button>
                   </div>
                 </div>
 
@@ -451,6 +441,33 @@ const ProjectsPage = () => {
           </div>
         </div>
       </div>
+      {modalImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6" onClick={() => setModalImage(null)}>
+          <div
+            className="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setModalImage(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
+              aria-label="Tutup modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={modalImage.src}
+              alt={modalImage.title}
+              className="w-full max-h-[80vh] object-contain bg-black"
+            />
+            {modalImage.title && (
+              <div className="px-6 py-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-lg font-semibold text-gray-800 dark:text-gray-100">{modalImage.title}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };
