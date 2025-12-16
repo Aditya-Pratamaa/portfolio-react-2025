@@ -57,16 +57,10 @@ const ProjectsPage = () => {
     10: project10
   };
 
-  // Fungsi untuk mengimpor gambar secara dinamis
-  const importImage = (imagePath) => {
-    try {
-      // Untuk pengembangan lokal
-      return require(`../assets/projects/${imagePath.split('/').pop()}`);
-    } catch (error) {
-      // Fallback untuk deployment
-      return `/assets/projects/${imagePath.split('/').pop()}`;
-    }
-  };
+  // Debug: log gambar untuk memastikan path benar
+  useEffect(() => {
+    console.log('Project Images:', projectImages);
+  }, []);
 
   // Generate floating particles
   useEffect(() => {
@@ -329,11 +323,15 @@ const ProjectsPage = () => {
               >
                 {/* Project Image */}
                 <div className="relative overflow-hidden rounded-t-2xl bg-gradient-to-br from-rose-100 to-pink-100 dark:from-gray-700 dark:to-gray-600 h-48 flex items-center justify-center">
-                  {project.image && projectImages[project.id] ? (
+                  {projectImages[project.id] ? (
                     <img 
                       src={projectImages[project.id]} 
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        console.error('Image failed to load:', projectImages[project.id], 'for project:', project.id);
+                        e.target.style.display = 'none';
+                      }}
                     />
                   ) : (
                     <div className="text-6xl opacity-50">
