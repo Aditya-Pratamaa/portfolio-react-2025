@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Lottie from 'lottie-react';
 import projectsData from '../datas/projects/projects.json';
+import loadingPacMan from '../assets/animations/Loading_PacMan.json';
 import {
   ExternalLink,
   Github,
@@ -185,7 +187,14 @@ const ProjectsPage = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-rose-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-rose-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-48 h-48 mx-auto mb-4">
+            <Lottie 
+              animationData={loadingPacMan} 
+              loop={true} 
+              autoplay={true}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
           <p className="text-xl font-semibold">Loading amazing projects...</p>
         </div>
       </div>
