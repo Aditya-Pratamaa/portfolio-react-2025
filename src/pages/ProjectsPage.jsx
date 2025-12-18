@@ -324,12 +324,15 @@ const ProjectsPage = () => {
                 className="group bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-rose-200 dark:border-gray-600 hover:bg-white/80 dark:hover:bg-gray-700/80 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
               >
                 {/* Project Image */}
-                <div className="relative overflow-hidden rounded-t-2xl bg-gradient-to-br from-rose-100 to-pink-100 dark:from-gray-700 dark:to-gray-600 h-48 flex items-center justify-center">
+                <div 
+                  className="relative overflow-hidden rounded-t-2xl bg-gradient-to-br from-rose-100 to-pink-100 dark:from-gray-700 dark:to-gray-600 h-48 flex items-center justify-center cursor-pointer"
+                  onClick={() => projectImages[project.id] && setModalImage({ src: projectImages[project.id], title: project.title })}
+                >
                   {projectImages[project.id] ? (
                     <img 
                       src={projectImages[project.id]} 
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none"
                       onError={(e) => {
                         console.error('Image failed to load:', projectImages[project.id], 'for project:', project.id);
                         e.target.style.display = 'none';
@@ -342,11 +345,14 @@ const ProjectsPage = () => {
                   )}
                   
                   {/* Overlay with quick actions */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 pointer-events-none">
                     <button
                       type="button"
-                      onClick={() => setModalImage({ src: projectImages[project.id], title: project.title })}
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setModalImage({ src: projectImages[project.id], title: project.title });
+                      }}
+                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 transform hover:scale-110 pointer-events-auto"
                       aria-label={`Lihat gambar ${project.title}`}
                     >
                       <Eye className="w-6 h-6" />
@@ -426,7 +432,7 @@ const ProjectsPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="flex items-center gap-2 bg-white text-rose-600 px-8 py-4 rounded-full font-bold hover:bg-rose-50 transition-all duration-300 transform hover:scale-105"
+              className="flex items-center gap-2 justify-center-safe bg-white text-rose-600 px-8 py-4 rounded-full font-bold hover:bg-rose-50 transition-all duration-300 transform hover:scale-105"
             >
               Let's Talk
               <ChevronRight className="w-5 h-5" />
