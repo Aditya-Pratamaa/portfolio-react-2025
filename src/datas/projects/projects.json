@@ -97,16 +97,5 @@
     "demo": "",
     "tags": ["mobile"],
     "date": ""
-  },
-  {
-    "id": 10,
-    "title": "Virtual Gift",
-    "description": "Building website for Virtual Gift with HTML, CSS, and JavaScript",
-    "image": "/src/assets/projects/10.png",
-    "technologies": ["HTML", "CSS", "JavaScript"],
-    "github": "",
-    "demo": "https://virtual-gift-idea-aditya.vercel.app/",
-    "tags": ["web", "frontend"],
-    "date": ""
   }
 ]
